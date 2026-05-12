@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 import { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
+const ADMIN_EMAILS = ["gokulakrishnanoffl@gmail.com"];
+
 interface AuthContextValue {
   user: User | null;
   session: Session | null;
@@ -11,6 +13,12 @@ interface AuthContextValue {
 }
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+
+const checkIsAdmin = (userEmail: string | undefined) => {
+  if (!userEmail) return false;
+  if (ADMIN_EMAILS.includes(userEmail)) return true;
+  return false;
+};
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -23,15 +31,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setSession(sess);
       setUser(sess?.user ?? null);
       if (sess?.user) {
-        setTimeout(() => {
-          supabase
-            .from("user_roles")
-            .select("role")
-            .eq("user_id", sess.user.id)
-            .eq("role", "admin")
-            .maybeSingle()
-            .then(({ data }) => setIsAdmin(!!data));
-        }, 0);
+        // Check if email is in admin list
+        const emailAdmin = checkIsAdmin(sess.user.email);
+        if (emailAdmin) {
+          setIsAdmin(true);
+        } else {
+          // Otherwise check database
+          setTimeout(() => {
+            supabase
+              .from("user_roles")
+              .select("role")
+              .eq("user_id", sess.user.id)
+              .eq("role", "admin")
+              .maybeSingle()
+              .then(({ data }) => setIsAdmin(!!data));
+          }, 0);
+        }
       } else {
         setIsAdmin(false);
       }
@@ -42,13 +57,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(session?.user ?? null);
       setLoading(false);
       if (session?.user) {
-        supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", session.user.id)
-          .eq("role", "admin")
-          .maybeSingle()
-          .then(({ data }) => setIsAdmin(!!data));
+        // Check if email is in admin list
+        const emailAdmin = checkIsAdmin(session.user.email);
+        if (emailAdmin) {
+          setIsAdmin(true);
+        } else {
+          // Otherwise check database
+          supabase
+            .from("user_roles")
+            .select("role")
+            .eq("user_id", session.user.id)
+            .eq("role", "admin")
+            .maybeSingle()
+            .then(({ data }) => setIsAdmin(!!data));
+        }
       }
     });
 
