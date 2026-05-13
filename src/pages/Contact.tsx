@@ -44,9 +44,9 @@ const Contact = () => {
         <div className="grid lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2 space-y-6">
             {[
-              { icon: Mail, title: "Email", text: "hello@gkcoconuts.in" },
-              { icon: Phone, title: "Phone", text: "+91 98765 43210" },
-              { icon: MapPin, title: "Grove", text: "Pollachi, Tamil Nadu, India" },
+              { icon: Mail, title: "Email", text: "gokulakrishnanoffl@gmail.com" },
+              { icon: Phone, title: "Phone", text: "+91 9787156029" },
+              { icon: MapPin, title: "Grove", text: "Nallur, Tamil Nadu, India" },
             ].map((item) => (
               <div key={item.title} className="flex items-start gap-4 p-5 rounded-2xl gradient-card border border-border/40 shadow-soft">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full gradient-leaf flex-shrink-0">

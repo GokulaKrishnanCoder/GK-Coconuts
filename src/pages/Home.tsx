@@ -97,12 +97,13 @@ const Home = () => {
           <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-coconut/10 blur-3xl" />
           <div className="relative max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
-              Three generations<br/>of coconut farming.
+              A Humble Grove
             </h2>
             <p className="text-primary-foreground/85 text-lg mb-6">
-              Every coconut tells a story. Ours began in 1962 on the breezy
-              coastlines of Kerala — and we still hand-pick every fruit the
-              same way today.
+              Our journey began when my father leased a coconut grove with a simple vision —
+              to bring fresh, naturally grown coconuts directly to people. What started as a
+              small local business selling hand-picked coconuts has grown through hard work,
+              consistency, and trust.
             </p>
             <Button asChild variant="secondary" size="lg" className="rounded-full">
               <Link to="/about">Read our story <ArrowRight className="ml-2 h-4 w-4" /></Link>

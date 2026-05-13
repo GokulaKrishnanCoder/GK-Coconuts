@@ -8,8 +8,8 @@ const About = () => (
       <div className="max-w-3xl mb-16">
         <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">Our Story</p>
         <h1 className="font-display text-5xl md:text-7xl font-bold leading-[1] text-balance">
-          A family grove,<br/>
-          <span className="italic text-primary">three generations strong.</span>
+          A Groove,<br/>
+          <span className="italic text-primary">helped with Family dedication.</span>
         </h1>
       </div>
 
@@ -19,14 +19,11 @@ const About = () => (
         </div>
         <div className="space-y-5 text-lg text-muted-foreground">
           <p>
-            <span className="font-display text-foreground text-xl">It started in 1962</span>{" "}
-            when our grandfather planted his first 50 coconut saplings along the breezy Kerala coast.
-            What began as a humble family plot has grown into a 200-acre regenerative grove tended by
-            the same hands — now in their third generation.
+            <span className="font-display text-foreground text-xl">It started in 2022</span>{" "}
+           We believe in honest farming practices, natural goodness, and sharing the richness of coconut farming with every household.
           </p>
           <p>
-            We don't rush nature. Coconuts are hand-picked at peak ripeness, oils are cold-pressed in
-            small batches, and every product reaches you within days of harvest.
+            We don't rush nature. Coconuts are hand-picked at peak ripeness and every product reaches you within days of harvest.
           </p>
           <p>
             <span className="text-foreground font-medium">No shortcuts. No fillers. Just coconuts, the way they should be.</span>
